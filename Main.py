@@ -12,7 +12,15 @@ while True:
 '''
 columnnames = ['Date', 'Node id', 'Uptime', 'Health']
 df = pd.read_csv('temp_output.csv', delimiter=';', names=columnnames)
-print(df)
+
+listid = list(df['Node id'].unique())
+
+finalDF = pd.DataFrame()
+for i in listid:
+    finalDF = finalDF._append(pd.DataFrame(data=[[df['Date'][df['Node id']==i].iloc[-1],
+                                                  i,
+                                                  df['Uptime'][df['Node id']==i].iloc[-1],
+                                                  df['Health'][df['Node id']==i].mean()]]))
 
 # finally save to csv
-df.to_csv('output.csv', header=False, index=False)
+finalDF.to_csv('output.csv', header=False, index=False)
