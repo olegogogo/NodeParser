@@ -32,7 +32,7 @@ def handle_node_info(msg):
                                 (datetime.datetime.now() + datetime.timedelta(hours=2)).strftime("%H:%M:%S"),
                                 msg.transfer.source_node_id,
                                 datetime.timedelta(seconds=int(str(dict(msg.transfer.payload._fields)['uptime_sec']))),
-                                dict(msg.transfer.payload._fields)['health']), #file=file
+                                dict(msg.transfer.payload._fields)['health']), file=file
           )
 
 node.add_handler(uavcan.protocol.NodeStatus, handle_node_info)
