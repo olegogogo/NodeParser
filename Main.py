@@ -1,10 +1,12 @@
 import pandas as pd
+import datetime
+
 columnnames = ['Date', 'Node id', 'Uptime', 'Health']
 finalDF = pd.DataFrame()
 
 while True:
     try:
-        print('Listening nodes...')
+        print('Listening nodes... : ', (datetime.datetime.now() + datetime.timedelta(hours=2)).strftime("%H:%M:%S"))
         exec(open("MessageHandler.py").read())
 
         df = pd.read_csv('temp_output.csv', delimiter=';', names=columnnames)
