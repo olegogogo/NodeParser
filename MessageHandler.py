@@ -39,6 +39,6 @@ node.add_handler(uavcan.protocol.NodeStatus, handle_node_info)
 
 try:
     # spin node for hour and gethering dataset
-    node.spin(timeout=1) # timeout 3600?
-except KeyboardInterrupt:
-    quit()
+    node.spin(timeout=3600) # timeout 3600?
+except Exception:
+    pass
